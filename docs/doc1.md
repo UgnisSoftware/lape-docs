@@ -4,26 +4,44 @@ title: Getting Started
 sidebar_label: Getting Started
 ---
 
-Check the [documentation](https://docusaurus.io) for how to use Docusaurus.
+## Example explained:
 
-## Lorem
+Every app consists of 3 parts:
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus elementum massa eget nulla aliquet sagittis. Proin odio tortor, vulputate ut odio in, ultrices ultricies augue. Cras ornare ultrices lorem malesuada iaculis. Etiam sit amet libero tempor, pulvinar mauris sed, sollicitudin sapien.
+- State - a simple JSON structure
+- Side-effects - rendering to DOM, fetching from server, setting timers, etc.
+- Events - functions that change the state
 
-## Mauris In Code
+### State
+
+State can be any JSON structure that is passed into a `lape` function. The `lape` function transparently wraps your data and tracks every Get and Set operation.
+
+### Side effects
+
+#### React
+
+`connect` is a small wrapper around your component that records any Get operations from state. If any event changes the tracked state, the component will trigger it's render function.
+
+#### Virtual fetch
+
+Not implemented yet, use promises or async/await
+
+### Events
+
+Events is a function that mutates the state. Don't trigger it while doing side-effects or it might loop. Every side effect that used the changed state will update automatically.
+
+## Pro tips:
+
+- You should `connect` every component that uses global state, connecting just the root is fine, but connecting more is a good optimisation
+- Don't mutate the state in render (same as calling setState(), could cause infinite loops)
+- The end nodes, like strings/numbers/booleans, are not proxies, so don't do `lape('abc')`, have at least one parent `lape({name: 'abc'})`
+- Same goes for reassignment:
 
 ```
-Mauris vestibulum ullamcorper nibh, ut semper purus pulvinar ut. Donec volutpat orci sit amet mauris malesuada, non pulvinar augue aliquam. Vestibulum ultricies at urna ut suscipit. Morbi iaculis, erat at imperdiet semper, ipsum nulla sodales erat, eget tincidunt justo dui quis justo. Pellentesque dictum bibendum diam at aliquet. Sed pulvinar, dolor quis finibus ornare, eros odio facilisis erat, eu rhoncus nunc dui sed ex. Nunc gravida dui massa, sed ornare arcu tincidunt sit amet. Maecenas efficitur sapien neque, a laoreet libero feugiat ut.
+const state = lape({user: {name: 'abc'}})
+let name = state.user.name
+name = 'cba' // This will not change the state, only reassign local variable because primitives are immutable in JS
+
+let user = state.user
+user.name = 'cba' // This will work as objects are shared by reference
 ```
-
-## Nulla
-
-Nulla facilisi. Maecenas sodales nec purus eget posuere. Sed sapien quam, pretium a risus in, porttitor dapibus erat. Sed sit amet fringilla ipsum, eget iaculis augue. Integer sollicitudin tortor quis ultricies aliquam. Suspendisse fringilla nunc in tellus cursus, at placerat tellus scelerisque. Sed tempus elit a sollicitudin rhoncus. Nulla facilisi. Morbi nec dolor dolor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras et aliquet lectus. Pellentesque sit amet eros nisi. Quisque ac sapien in sapien congue accumsan. Nullam in posuere ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin lacinia leo a nibh fringilla pharetra.
-
-## Orci
-
-Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin venenatis lectus dui, vel ultrices ante bibendum hendrerit. Aenean egestas feugiat dui id hendrerit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur in tellus laoreet, eleifend nunc id, viverra leo. Proin vulputate non dolor vel vulputate. Curabitur pretium lobortis felis, sit amet finibus lorem suscipit ut. Sed non mollis risus. Duis sagittis, mi in euismod tincidunt, nunc mauris vestibulum urna, at euismod est elit quis erat. Phasellus accumsan vitae neque eu placerat. In elementum arcu nec tellus imperdiet, eget maximus nulla sodales. Curabitur eu sapien eget nisl sodales fermentum.
-
-## Phasellus
-
-Phasellus pulvinar ex id commodo imperdiet. Praesent odio nibh, sollicitudin sit amet faucibus id, placerat at metus. Donec vitae eros vitae tortor hendrerit finibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque vitae purus dolor. Duis suscipit ac nulla et finibus. Phasellus ac sem sed dui dictum gravida. Phasellus eleifend vestibulum facilisis. Integer pharetra nec enim vitae mattis. Duis auctor, lectus quis condimentum bibendum, nunc dolor aliquam massa, id bibendum orci velit quis magna. Ut volutpat nulla nunc, sed interdum magna condimentum non. Sed urna metus, scelerisque vitae consectetur a, feugiat quis magna. Donec dignissim ornare nisl, eget tempor risus malesuada quis.
