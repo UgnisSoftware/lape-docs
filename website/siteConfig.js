@@ -36,7 +36,7 @@ const siteConfig = {
   copyright: `Copyright © ${new Date().getFullYear()} Ugnis. All Rights Reserved.`,
 
   highlight: {
-    theme: "default",
+    theme: "darcula",
   },
 
   fonts: {

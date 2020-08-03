@@ -1,6 +1,7 @@
 const React = require("react");
 
 const CompLibrary = require("../../core/CompLibrary.js");
+const renderMarkdown = require("docusaurus/lib/core/renderMarkdown");
 
 const MarkdownBlock = CompLibrary.MarkdownBlock; /* Used to read markdown */
 const Container = CompLibrary.Container;
@@ -49,68 +50,128 @@ class Index extends React.Component {
     const { config: siteConfig, language = "" } = this.props;
 
     const GlobalState = () => (
-      <Container padding={["bottom", "top"]}>
+      <Container padding={["top"]}>
         <div className="exampleWrapper">
-          <h2 className="codeExplanation">Global</h2>
-          <p className="codeExplanation">Wrap your state object with lape</p>
-          <div className="codeBlock">
-            {`import { lape } from 'lape'
-
-const state = `}
-            <b>lape</b>
-            {`({
-  count: 0,
-  deep: {
-     nest: true
-  }
-})
-`}
+          <div className="commentWrapper">
+            <h2 className="codeExplanation">Global state</h2>
+            <p className="codeExplanation">
+              Lape is a helper library that allows using any object as state
+            </p>
+            <p>
+              <b>lape(object)</b> - wraps an object and emits internal events
+              when the object is mutated
+            </p>
+            <p>
+              <b>connect(Component)</b> - wraps React Component to track which
+              state was used in render. Rerenders the Component when the used
+              state was mutated.
+            </p>
           </div>
-        </div>
-      </Container>
-    );
+          <div
+            className="codeBlock"
+            dangerouslySetInnerHTML={{
+              __html: renderMarkdown(`
+\`\`\`js
+import { lape, connect } from 'lape'
 
-    const ComponentState = () => (
-      <Container padding={["bottom", "top"]} background={"light"}>
-        <div className="exampleWrapper">
-          <h2 className="codeExplanation">Connect</h2>
-          <p className="codeExplanation">Wrap your component with connect</p>
-
-          <div className="codeBlock">
-            {`import { connect } from 'lape'
-
-const Component = `}
-            <b>connect</b>
-            {`(() => {
-
-
+const state = lape({
+  count: 0
 })
-`}
-          </div>
+
+const Component = () => {
+  const onClick = () => state.count += 1;
+  
+  return <div onClick={onClick}>{state.count}</div>
+}
+
+export default connect(Component)
+\`\`\`
+            `),
+            }}
+          />
         </div>
       </Container>
     );
 
     const LocalState = () => (
-      <Container padding={["bottom", "top"]}>
+      <Container padding={["top"]}>
         <div className="exampleWrapper">
-          <h2 className="codeExplanation">Local</h2>
-          <div className="codeBlock">
-            {`import { useLape } from 'lape'
+          <div className="commentWrapper">
+            <h2 className="codeExplanation">Local state</h2>
+            <p className="codeExplanation">
+              Not all state needs to be global, you can use the useLape hook to
+              have a component state that acts exactly the same as the global
+              lape state.
+            </p>
+          </div>
+          <div
+            className="codeBlock"
+            dangerouslySetInnerHTML={{
+              __html: renderMarkdown(`
+\`\`\`js
+import { connect, useLape } from 'lape'
 
 const Component = () => {
-  const state = `}
-            <b>useLape</b>
-            {`({
+  const state = useLape({
     count: 1,
   });
 
   const onClick = () => state.count += 1;
   
   return <div onClick={onClick}>{state.count}</div>
-})
-`}
+}
+
+export default connect(Component)
+\`\`\`
+            `),
+            }}
+          />
+        </div>
+      </Container>
+    );
+
+    const UndoRedo = () => (
+      <Container padding={["top", "bottom"]}>
+        <div className="exampleWrapper">
+          <div className="commentWrapper">
+            <h2 className="codeExplanation">Undo / redo</h2>
+            <p>
+              Everything inside <b>recordUndo</b> will be recorded as a single
+              action
+            </p>
+            <p>
+              Use <b>undo</b> and <b>redo</b> from lape to go backwards and
+              forwards in your action stack
+            </p>
           </div>
+          <div
+            className="codeBlock"
+            dangerouslySetInnerHTML={{
+              __html: renderMarkdown(`
+\`\`\`js
+import { recordUndo, undo, redo } from 'lape'
+import state from './state'
+
+const Component = () => {
+  const onClick = () => {
+    recordUndo(() => {
+      state.count += 1;
+    }
+  }
+  
+  return (
+    <>
+      <div onClick={() => undo()}>undo</div>
+      <div onClick={() => redo()}>redo</div>
+      <div onClick={onClick}>{state.count}</div>
+    </>
+  )
+}
+
+\`\`\`
+            `),
+            }}
+          />
         </div>
       </Container>
     );
@@ -119,8 +180,8 @@ const Component = () => {
       <div>
         <HomeSplash siteConfig={siteConfig} language={language} />
         <GlobalState />
-        <ComponentState />
         <LocalState />
+        <UndoRedo />
       </div>
     );
   }
