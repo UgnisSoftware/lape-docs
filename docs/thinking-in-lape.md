@@ -1,7 +1,8 @@
 ---
-id: doc1
-title: Getting Started
-sidebar_label: Getting Started
+id: thinking-in-lape
+title: This is document number 3
+sidebar_label: Thinking in Lape
+
 ---
 
 ## Example explained:
@@ -37,7 +38,7 @@ Events is a function that mutates the state. Don't trigger it while doing side-e
 - The end nodes, like strings/numbers/booleans, are not proxies, so don't do `lape('abc')`, have at least one parent `lape({name: 'abc'})`
 - Same goes for reassignment:
 
-```
+```js
 const state = lape({user: {name: 'abc'}})
 let name = state.user.name
 name = 'cba' // This will not change the state, only reassign local variable because primitives are immutable in JS

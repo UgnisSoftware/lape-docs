@@ -5,15 +5,41 @@
     "previous": "Previous",
     "tagline": "State Manager for React",
     "docs": {
-      "doc1": {
+      "connect": {
+        "title": "connect",
+        "sidebar_label": "connect"
+      },
+      "forms": {
+        "title": "Forms",
+        "sidebar_label": "Forms"
+      },
+      "getting-started": {
         "title": "Getting Started",
         "sidebar_label": "Getting Started"
       },
-      "doc2": {
-        "title": "document number 2"
+      "lape": {
+        "title": "lape",
+        "sidebar_label": "lape"
       },
-      "doc3": {
-        "title": "This is document number 3"
+      "routing": {
+        "title": "Routing",
+        "sidebar_label": "Routing"
+      },
+      "testing": {
+        "title": "Testing",
+        "sidebar_label": "Testing"
+      },
+      "thinking-in-lape": {
+        "title": "This is document number 3",
+        "sidebar_label": "Thinking in Lape"
+      },
+      "undo-redo": {
+        "title": "undo / redo",
+        "sidebar_label": "undo / redo"
+      },
+      "useLape": {
+        "title": "useLape",
+        "sidebar_label": "useLape"
       }
     },
     "links": {
@@ -21,9 +47,9 @@
       "GitHub": "GitHub"
     },
     "categories": {
-      "Docusaurus": "Docusaurus",
-      "First Category": "First Category",
-      "Second Category": "Second Category"
+      "Getting Started": "Getting Started",
+      "API": "API",
+      "Guides": "Guides"
     }
   },
   "pages-strings": {

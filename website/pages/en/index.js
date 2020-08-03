@@ -98,10 +98,11 @@ export default connect(Component)
         <div className="exampleWrapper">
           <div className="commentWrapper">
             <h2 className="codeExplanation">Local state</h2>
-            <p className="codeExplanation">
-              Not all state needs to be global, you can use the useLape hook to
-              have a component state that acts exactly the same as the global
-              lape state.
+            <p className="codeExplanation">Not all state needs to be global.</p>
+            <p>
+              <b>useLape</b> is a <b>useState</b> replacement that works exactly
+              the same as the global lape state - Component will rerender if the
+              state is mutated.
             </p>
           </div>
           <div
@@ -140,8 +141,13 @@ export default connect(Component)
               action
             </p>
             <p>
-              Use <b>undo</b> and <b>redo</b> from lape to go backwards and
-              forwards in your action stack
+              Use <b>undo</b> and <b>redo</b> to go backwards and forwards in
+              your action stack
+            </p>
+            <p>
+              It's possible to have multiple undo/redo stacks, all functions
+              accept stackId. Not sending a stackId will use the "default"
+              stack.
             </p>
           </div>
           <div
