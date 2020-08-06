@@ -10,8 +10,8 @@ const users = [
 const siteConfig = {
   title: "Lape",
   tagline: "State Manager for React",
-  url: "https://your-docusaurus-test-site.com",
-  baseUrl: "/",
+  url: "https://UgnisSoftware.github.io",
+  baseUrl: "/lape/",
 
   projectName: "lape",
   organizationName: "UgnisSoftware",
