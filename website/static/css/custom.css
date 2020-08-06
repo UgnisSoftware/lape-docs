@@ -149,10 +149,14 @@ a[href^=https]{
         grid-template-columns: 100%;
     }
     .codeBlock {
-        width: 100%
+        width: 100%;
     }
     .commentWrapper {
-        width: 100%
+        text-align: left;
+        border-right: none;
+        padding-left: 16px;
+        border-left: 1px solid $secondaryColor;
+        width: 100%;
     }
 }
 
@@ -164,6 +168,10 @@ a[href^=https]{
         width: 100%
     }
     .commentWrapper {
+        text-align: left;
+        border-right: none;
+        padding-left: 16px;
+        border-left: 1px solid $secondaryColor;
         width: 100%
     }
 }
