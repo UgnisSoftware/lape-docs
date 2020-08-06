@@ -10,11 +10,11 @@ const users = [
 const siteConfig = {
   title: "Lape",
   tagline: "State Manager for React",
-  url: "https://UgnisSoftware.github.io",
+  url: "https://ugnissoftware.github.io",
   baseUrl: "/lape/",
 
   projectName: "lape",
-  organizationName: "UgnisSoftware",
+  organizationName: "ugnissoftware",
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [

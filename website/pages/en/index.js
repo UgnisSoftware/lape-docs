@@ -27,7 +27,7 @@ class HomeSplash extends React.Component {
 
     const ProjectTitle = (props) => (
       <div className="projectTitle">
-        <img src="/img/logo.svg" alt="Project Logo" width={64} />
+        <img src="img/logo.svg" alt="Project Logo" width={64} />
         <h1 style={{ fontSize: "0.8em", marginBottom: "20px" }}>
           State Manager for React
         </h1>
