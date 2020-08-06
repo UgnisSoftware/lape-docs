@@ -58,8 +58,8 @@ class Index extends React.Component {
               Lape is a helper library that allows using any object as state
             </p>
             <p>
-              <b>lape(object)</b> - wraps an object and emits internal events
-              when the object is mutated
+              <b>lape(object)</b> - wraps an object and tracks when the object
+              is mutated
             </p>
             <p>
               <b>connect(Component)</b> - wraps React Component to track which
@@ -162,7 +162,7 @@ const Component = () => {
   const onClick = () => {
     recordUndo(() => {
       state.count += 1;
-    }
+    })
   }
   
   return (
@@ -173,7 +173,6 @@ const Component = () => {
     </>
   )
 }
-
 \`\`\`
             `),
             }}
@@ -183,7 +182,7 @@ const Component = () => {
     );
 
     return (
-      <div>
+      <div className="homepage">
         <HomeSplash siteConfig={siteConfig} language={language} />
         <GlobalState />
         <LocalState />

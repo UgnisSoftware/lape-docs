@@ -3,7 +3,7 @@ body {
     Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif;
 }
 
-h1 {
+.homepage h1 {
     font-size:38px;
     font-weight:400;
     line-height:38px;
@@ -11,13 +11,21 @@ h1 {
     margin-top:26px;
 }
 
-h2 {
+
+
+.homepage h2 {
     font-size:24px;
     font-weight:400;
     line-height:24px;
     margin-bottom:32px;
     margin-top:16px;
 }
+
+.homepage pre {
+    margin-bottom: 0;
+}
+
+
 .projectTitle {
   color: white;
 }
@@ -131,8 +139,9 @@ h2 {
     text-align: right;
 }
 
-pre {
-    margin-bottom: 0;
+a[href^=https]{
+    color: initial;
+    text-decoration: underline;
 }
 
 @media only screen and (min-device-width: 360px) and (max-device-width: 736px) {

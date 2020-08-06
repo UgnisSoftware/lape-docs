@@ -10,22 +10,16 @@ sidebar_label: Thinking in Lape
 Every app consists of 3 parts:
 
 - State - a simple JSON structure
-- Side-effects - rendering to DOM, fetching from server, setting timers, etc.
+- React Components
 - Events - functions that change the state
 
 ### State
 
 State can be any JSON structure that is passed into a `lape` function. The `lape` function transparently wraps your data and tracks every Get and Set operation.
 
-### Side effects
-
 #### React
 
-`connect` is a small wrapper around your component that records any Get operations from state. If any event changes the tracked state, the component will trigger it's render function.
-
-#### Virtual fetch
-
-Not implemented yet, use promises or async/await
+`connect` is a small wrapper around your component that records any Get operations from state. If any event changes the tracked state, the component will trigger its render function.
 
 ### Events
 

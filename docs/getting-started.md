@@ -4,9 +4,7 @@ title: Getting Started
 sidebar_label: Getting Started
 ---
 
----
-
-# Installing lape
+## Installing lape
 
 ```bash
 // NPM
@@ -16,10 +14,19 @@ npm i --save lape
 yarn add lape
 ```
 
-# Basic example
+## Basics
 
+Lape is a small helper library that allows using any object as state. 
 
-Define your state
+Lape has no concepts of its own, you use plain objects, mutate them when needed and Lape just makes sure that every react component rerenders when needed. 
+
+To achieve this Lape has to know when your state was mutated, so you need to wrap your state objects with `lape()`.
+
+And it has to know what state your Components are using and be able to rerender them, so you need to wrap your components with `connect()`.
+
+## Example
+
+Defining your state:
 
 ```typescript jsx
 import { lape } from 'lape'
@@ -30,7 +37,6 @@ interface State {
 
 const defaultState: State = {
   count: 0,
-  // Your state can be deeply nested as you want
   deep: {
     nested: true,
   },
@@ -40,11 +46,12 @@ const defaultState: State = {
 const state = lape(defaultState)
 ```
 
-Wrap your components with connect
+Wrapping components with connect and mutating state
 
-```typescript jsx
+
+```jsx
 import React from 'react'
-import { lape } from 'lape'
+import { connect } from 'lape'
 import state from './state'
 
 const Component = () => {
