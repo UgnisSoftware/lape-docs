@@ -145,9 +145,27 @@ a[href^=https]{
 }
 
 @media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
+    .exampleWrapper {
+        grid-template-columns: 100%;
+    }
+    .codeBlock {
+        width: 100%
+    }
+    .commentWrapper {
+        width: 100%
+    }
 }
 
 @media only screen and (min-width: 1024px) {
+    .exampleWrapper {
+        grid-template-columns: 100%;
+    }
+    .codeBlock {
+        width: 100%
+    }
+    .commentWrapper {
+        width: 100%
+    }
 }
 
 @media only screen and (max-width: 1023px) {
