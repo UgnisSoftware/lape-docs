@@ -17,9 +17,17 @@
         "title": "Getting Started",
         "sidebar_label": "Getting Started"
       },
+      "ignoreState": {
+        "title": "ignoreState",
+        "sidebar_label": "ignoreState"
+      },
       "lape": {
         "title": "lape",
         "sidebar_label": "lape"
+      },
+      "lapeTrackUseState": {
+        "title": "lapeTrackUseState",
+        "sidebar_label": "lapeTrackUseState"
       },
       "routing": {
         "title": "Routing",
@@ -40,6 +48,10 @@
       "useLape": {
         "title": "useLape",
         "sidebar_label": "useLape"
+      },
+      "useLapeEffect": {
+        "title": "useLapeEffect",
+        "sidebar_label": "useLapeEffect"
       }
     },
     "links": {

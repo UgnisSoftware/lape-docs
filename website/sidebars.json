@@ -1,7 +1,15 @@
 {
   "docs": {
     "Getting Started": ["getting-started", "thinking-in-lape"],
-    "API": ["lape", "connect", "useLape", "undo-redo"],
+    "API": [
+      "lape",
+      "connect",
+      "useLape",
+      "useLapeEffect",
+      "undo-redo",
+      "ignoreState",
+      "lapeTrackUseState"
+    ],
     "Guides": ["testing", "routing"]
   }
 }
